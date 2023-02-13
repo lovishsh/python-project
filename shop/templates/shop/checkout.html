@@ -1,0 +1,90 @@
+{% extends 'shop/base.html' %} 
+{% block title %} 
+Checkout
+{% endblock %}
+{% block body %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+ <div class="container my-5">
+    <h1>Please! give <em>My Shopping Cart</em> reviews</h1>
+    <div class="col">
+        <ol class="list-group list-group-numbered">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Cras justo odio
+              </div>
+              <span class="badge bg-primary rounded-pill">14</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Cras justo odio
+              </div>
+              <span class="badge bg-primary rounded-pill">14</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Cras justo odio
+              </div>
+              <span class="badge bg-primary rounded-pill">14</span>
+            </li>
+          </ol>
+    </div>
+ </div>
+
+
+ <div class="container my-2">
+        <h1>Fill your Details</h1>
+    <form class="row g-3" action="/shop/checkout" method="POST">
+      {% csrf_token %}
+        <div class="col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input type="name" class="form-control" id="name" name="name">
+          </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email">
+        </div>
+       
+        <div class="col-12">
+          <label for="address1" class="form-label">Address</label>
+          <input type="text" class="form-control" id="address1"  name="address1" placeholder="1234 Main St">
+        </div>
+        <div class="col-12">
+          <label for="address2" class="form-label">Address 2</label>
+          <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="col-md-6">
+          <label for="city" class="form-label">City</label>
+          <input type="text" class="form-control" name="city" id="city">
+        </div>
+        
+        <div class="col-md-4">
+          <label for="state" class="form-label">State</label>
+          <input type="text" class="form-control" id="state" name="state" placeholder="Enter your state">
+        </div>
+        <div class="col-md-2">
+          <label for="zip" class="form-label">Zip</label>
+          <input type="text" class="form-control" id="zip"  name="zip">
+        </div>
+        <div class="col-md-6">
+            <label for="number" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" id="number"  name="number">
+          </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Place Order</button>
+        </div>
+    </form>
+    </div>
+
+{% endblock body %}
+
